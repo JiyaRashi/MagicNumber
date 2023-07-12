@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="450">
     <Grid>
-
-        <Grid VerticalAlignment="Top" HorizontalAlignment="Left" ShowGridLines="True" Width="250" Height="100">
+        <!--<Grid VerticalAlignment="Top" HorizontalAlignment="Left" ShowGridLines="True" Width="250" Height="100">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -18,15 +17,36 @@
             </Grid.RowDefinitions>
 
             <CheckBox Grid.Column="0" Grid.Row="0"  Height="40" Width="20" Grid.RowSpan="2"/>
-            <ListView x:Name="_listNumber" Grid.Column="1" Grid.Row="0"  >            
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">                        
-                        <Label Content="{Binding number}" FontWeight="ExtraBold" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <ListView x:Name="listMasterBox" ItemsSource="{Binding _listMasterBox}" Grid.Column="1" Grid.Row="0"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding number}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>-->
+
+        <Grid>
+            <ListView Name="ListviewMother">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="20">
+                            <CheckBox Content="{Binding }"></CheckBox>
+                            <ListView ItemsSource="{Binding lines}" Background="Blue">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="2" >
+                                            <TextBox Text="{Binding linenumber}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
     </Grid>
 </Window>

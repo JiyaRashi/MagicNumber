@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,23 +21,28 @@ namespace MagicNumber
     /// </summary>
     public partial class MainWindow : Window
     {
+        public ObservableCollection<Page> pages = new ObservableCollection<Page>();
         public MainWindow()
         {
+            pages.Add(new Page() { Title = "Page1", lines = new ObservableCollection<line>() { new line() { linenumber = "Line1_1" }, new line() { linenumber = "Line1_2" }, new line() { linenumber = "Line1_3" } } });
+            pages.Add(new Page() { Title = "Page2", lines = new ObservableCollection<line>() { new line() { linenumber = "Line2_1" }, new line() { linenumber = "Line2_2" }, new line() { linenumber = "Line2_3" } } });
+            
             InitializeComponent();
-
-            List<BoxNumbber> items = new List<BoxNumbber>();
-            items.Add(new BoxNumbber() { number = 42});
-            items.Add(new BoxNumbber() { number = 55 });
-            items.Add(new BoxNumbber() { number = 56 });
-            _listNumber.ItemsSource = items;
+            ListviewMother.ItemsSource = pages;
         }
     }
 
-    public class BoxNumbber
+
+    public class Page
     {
+        public string Title { get; set; }
+        public string TemplateStyle { get; set; }
+        public ObservableCollection<line> lines { get; set; } = new ObservableCollection<line>();
 
-        public int number { get; set; }
+    }
 
-       
+    public class line
+    {
+        public string linenumber { get; set; }
     }
 }

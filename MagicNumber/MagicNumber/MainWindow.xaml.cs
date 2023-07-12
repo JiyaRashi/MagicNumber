@@ -23,6 +23,20 @@ namespace MagicNumber
         public MainWindow()
         {
             InitializeComponent();
+
+            List<BoxNumbber> items = new List<BoxNumbber>();
+            items.Add(new BoxNumbber() { number = 42});
+            items.Add(new BoxNumbber() { number = 55 });
+            items.Add(new BoxNumbber() { number = 56 });
+            _listNumber.ItemsSource = items;
         }
+    }
+
+    public class BoxNumbber
+    {
+
+        public int number { get; set; }
+
+       
     }
 }

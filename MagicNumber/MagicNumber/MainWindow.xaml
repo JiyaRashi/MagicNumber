@@ -27,26 +27,38 @@
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>-->
+        <Grid Width="200" HorizontalAlignment="Center" VerticalAlignment="Top"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="Auto"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid  Grid.Row="0">
+                <ListView Name="ListviewMother">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <WrapPanel Margin="20">
+                                <CheckBox IsChecked="{Binding IsChecked}" />
+                                <ItemsControl  ItemsSource="{Binding BoxNumber}" Background="Blue">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate  >
+                                            <Grid Margin="2"  >
+                                                <WrapPanel Orientation="Horizontal">
+                                                <TextBox Text="{Binding digitnumber}"  FontSize="15" />
+                                                </WrapPanel>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-        <Grid>
-            <ListView Name="ListviewMother">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="20">
-                            <CheckBox Content="{Binding }"></CheckBox>
-                            <ListView ItemsSource="{Binding lines}" Background="Blue">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid Margin="2" >
-                                            <TextBox Text="{Binding linenumber}" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            </Grid>
+            <Button  Grid.Row="1" Content="Get Number" Click="Button_Click"  />
         </Grid>
     </Grid>
 </Window>

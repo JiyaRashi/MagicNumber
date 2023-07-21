@@ -22,13 +22,20 @@ namespace MagicNumber
     public partial class MainWindow : Window
     {
         public ObservableCollection<Position> positionsNumber { get; set; }
+
+        public ObservableCollection<Digit> Pos_1_Number { get; set; }
+        public ObservableCollection<Digit> Pos_2_Number { get; set; }
+        public ObservableCollection<Digit> Pos_3_Number { get; set; }
+        public ObservableCollection<Digit> Pos_4_Number { get; set; }
+
+        public int MagicNumber;
         public MainWindow()
         {
             positionsNumber = new ObservableCollection<Position>();
-            ObservableCollection<Digit> Pos_1_Number = new ObservableCollection<Digit>();
-            ObservableCollection<Digit> Pos_2_Number = new ObservableCollection<Digit>();
-            ObservableCollection<Digit> Pos_3_Number = new ObservableCollection<Digit>();
-            ObservableCollection<Digit> Pos_4_Number = new ObservableCollection<Digit>();
+             Pos_1_Number = new ObservableCollection<Digit>();
+             Pos_2_Number = new ObservableCollection<Digit>();
+             Pos_3_Number = new ObservableCollection<Digit>();
+             Pos_4_Number = new ObservableCollection<Digit>();
 
             for (int i = 0; i < 15; i++)
             {
@@ -106,9 +113,38 @@ namespace MagicNumber
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            CheckBox checkBox = sender as CheckBox;
+            var data = (Position)checkBox.DataContext;
+            ObservableCollection<Digit> digits;
+            if (data.IsChecked)
+            {
+                 digits = data.BoxNumber;
+                MagicNumber += digits[0].digitnumber;
+            }
+          
+            //ObservableCollection<Digit> _box = checkBox as Position;
+            //if (data.Title == "Box Number 1")
+            //{
 
-            
+            //}
+            //else if (data.Title == "Box Number 2")
+            //{
 
+            //}
+            //else if (data.Title == "Box Number 3")
+            //{
+
+            //}
+            //else if (data.Title == "Box Number 4")
+            //{
+
+            //}
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($" Your Numer is {MagicNumber}");
+            MagicNumber = 0;
         }
     }
 
